@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="screen_padding">16dp</dimen>
+    <dimen name="spacing_small">8dp</dimen>
+    <dimen name="spacing_medium">12dp</dimen>
+    <dimen name="avatar_size_small">56dp</dimen>
+    <dimen name="avatar_size_large">88dp</dimen>
+    <dimen name="ability_item_width">88dp</dimen>
+</resources>

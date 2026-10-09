@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Paleta inspirada em Valorant. -->
+    <color name="valorant_red">#FF4655</color>
+    <color name="valorant_navy">#0F1923</color>
+    <color name="valorant_surface">#1F2731</color>
+    <color name="valorant_surface_variant">#2C3540</color>
+    <color name="valorant_off_white">#ECE8E1</color>
+    <color name="valorant_muted">#B7BEC6</color>
+    <color name="valorant_outline">#5B6670</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+</resources>

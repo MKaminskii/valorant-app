@@ -1,0 +1,21 @@
+<resources>
+    <style name="Base.Theme.ValorantAgents" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/valorant_red</item>
+        <item name="colorOnPrimary">@color/valorant_navy</item>
+        <item name="colorPrimaryContainer">@color/valorant_surface_variant</item>
+        <item name="colorOnPrimaryContainer">@color/valorant_off_white</item>
+        <item name="colorSecondaryContainer">@color/valorant_surface_variant</item>
+        <item name="colorOnSecondaryContainer">@color/valorant_off_white</item>
+        <item name="android:colorBackground">@color/valorant_navy</item>
+        <item name="colorOnBackground">@color/valorant_off_white</item>
+        <item name="colorSurface">@color/valorant_navy</item>
+        <item name="colorSurfaceContainerHighest">@color/valorant_surface_variant</item>
+        <item name="colorSurfaceContainerHigh">@color/valorant_surface</item>
+        <item name="colorSurfaceContainer">@color/valorant_surface</item>
+        <item name="colorOnSurface">@color/valorant_off_white</item>
+        <item name="colorOnSurfaceVariant">@color/valorant_muted</item>
+        <item name="colorOutline">@color/valorant_outline</item>
+    </style>
+
+    <style name="Theme.ValorantAgents" parent="Base.Theme.ValorantAgents" />
+</resources>
