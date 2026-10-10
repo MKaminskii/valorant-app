@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Valorant Agentes</string>
 
-    <!-- Lista -->
     <string name="agents_title">Agentes</string>
     <string name="agents_subtitle">Conheça a função e as habilidades de cada agente</string>
     <string name="filter_all">Todos</string>
@@ -11,14 +10,12 @@
         <item quantity="other">%d habilidades</item>
     </plurals>
 
-    <!-- Detalhe -->
     <string name="back">Voltar</string>
     <string name="agent_not_found">Agente não encontrado</string>
-    <string name="developer_name">Codinome: %1$s</string>
+    <string name="real_name">Nome real: %1$s</string>
     <string name="biography">Biografia</string>
     <string name="role_title">Função: %1$s</string>
     <string name="abilities_section">Habilidades</string>
 
-    <!-- Habilidades -->
     <string name="ability_slot_key">Tecla %1$s</string>
 </resources>

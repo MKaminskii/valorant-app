@@ -14,11 +14,6 @@ import com.mkaminskii.valorantagents.databinding.FragmentAbilitiesBinding
 import com.mkaminskii.valorantagents.databinding.ItemAbilityBinding
 import com.mkaminskii.valorantagents.model.Ability
 
-/**
- * Fragment da seção "Habilidades" da tela de detalhe.
- * Cada habilidade é um componente reutilizável (item_ability.xml) inflado em tempo de execução;
- * ao tocar em uma delas, o card de descrição é atualizado.
- */
 class AbilitiesFragment : Fragment() {
 
     // O binding só existe entre onCreateView e onDestroyView, evitando vazar a hierarquia de Views.
@@ -42,7 +37,6 @@ class AbilitiesFragment : Fragment() {
         val agentId = requireArguments().getString(ARG_AGENT_ID)
         abilities = MockAgents.findById(agentId)?.orderedAbilities.orEmpty()
 
-        // Sem habilidades, a seção fica oculta.
         binding.root.isVisible = abilities.isNotEmpty()
         if (abilities.isEmpty()) return
 
@@ -51,6 +45,9 @@ class AbilitiesFragment : Fragment() {
             val item = ItemAbilityBinding.inflate(layoutInflater, binding.abilitiesRow, false)
             item.abilityKey.text = ability.slot.key
             item.abilityName.text = ability.name
+            val iconRes = ability.iconRes
+            item.abilityIcon.isVisible = iconRes != null
+            if (iconRes != null) item.abilityIcon.setImageResource(iconRes)
             item.root.setOnClickListener { selectAbility(index) }
             binding.abilitiesRow.addView(item.root)
             itemBindings += item
@@ -65,7 +62,6 @@ class AbilitiesFragment : Fragment() {
         _binding = null
     }
 
-    /** Interação que atualiza a interface: destaca a habilidade tocada e mostra sua descrição. */
     private fun selectAbility(index: Int) {
         val ability = abilities[index]
         binding.selectedAbilitySlot.text = getString(R.string.ability_slot_key, ability.slot.key)

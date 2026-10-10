@@ -2,27 +2,26 @@ package com.mkaminskii.valorantagents.views.detail
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.ColorUtils
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.commit
+import com.google.android.material.color.MaterialColors
 import com.mkaminskii.valorantagents.R
 import com.mkaminskii.valorantagents.data.mock.MockAgents
 import com.mkaminskii.valorantagents.databinding.ActivityAgentDetailBinding
 import com.mkaminskii.valorantagents.databinding.ViewBadgeBinding
 import com.mkaminskii.valorantagents.model.Agent
+import com.mkaminskii.valorantagents.views.common.accentColor
 import com.mkaminskii.valorantagents.views.common.applySystemBarsPadding
 import com.mkaminskii.valorantagents.views.common.bind
 
-/**
- * Tela 2: detalhes de um agente.
- * Recebe o id do agente pela Intent ([EXTRA_AGENT_ID]) e exibe as habilidades
- * dentro de um [AbilitiesFragment], que faz parte desta mesma tela.
- */
 class AgentDetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAgentDetailBinding
@@ -35,7 +34,6 @@ class AgentDetailActivity : AppCompatActivity() {
         binding.root.applySystemBarsPadding()
         binding.toolbar.setNavigationOnClickListener { onBackPressedDispatcher.onBackPressed() }
 
-        // O extra é opcional: se não vier ou não corresponder a um agente, avisamos e fechamos a tela.
         val agent = MockAgents.findById(intent.getStringExtra(EXTRA_AGENT_ID))
         if (agent == null) {
             Toast.makeText(this, R.string.agent_not_found, Toast.LENGTH_SHORT).show()
@@ -56,7 +54,7 @@ class AgentDetailActivity : AppCompatActivity() {
     }
 
     private fun bindAgent(agent: Agent) {
-        binding.avatar.bind(agent)
+        bindHeader(agent)
         binding.agentName.text = agent.name
         binding.description.text = agent.description
 
@@ -68,13 +66,12 @@ class AgentDetailActivity : AppCompatActivity() {
             binding.roleDescription.text = role.description
         }
 
-        val developerName = agent.developerName
-        binding.developerName.isVisible = developerName != null
-        if (developerName != null) {
-            binding.developerName.text = getString(R.string.developer_name, developerName)
+        val realName = agent.realName
+        binding.realName.isVisible = realName != null
+        if (realName != null) {
+            binding.realName.text = getString(R.string.real_name, realName)
         }
 
-        // Tags são opcionais: lista nula ou vazia esconde a linha.
         val tags = agent.tags.orEmpty()
         binding.tagsScroll.isVisible = tags.isNotEmpty()
         val spacing = resources.getDimensionPixelSize(R.dimen.spacing_small)
@@ -83,6 +80,28 @@ class AgentDetailActivity : AppCompatActivity() {
             badge.root.text = tag
             badge.root.updateLayoutParams<LinearLayout.LayoutParams> { marginEnd = spacing }
             binding.tagsRow.addView(badge.root)
+        }
+    }
+
+    private fun bindHeader(agent: Agent) {
+        val accent = agent.accentColor(binding.root)
+        val background = MaterialColors.getColor(binding.root, android.R.attr.colorBackground)
+        binding.header.background = GradientDrawable(
+            GradientDrawable.Orientation.TOP_BOTTOM,
+            intArrayOf(ColorUtils.setAlphaComponent(accent, 0xB3), background),
+        )
+
+        val backgroundRes = agent.backgroundRes
+        binding.headerBackground.isVisible = backgroundRes != null
+        if (backgroundRes != null) binding.headerBackground.setImageResource(backgroundRes)
+
+        val portraitRes = agent.portraitRes
+        binding.portrait.isVisible = portraitRes != null
+        binding.avatar.root.isVisible = portraitRes == null
+        if (portraitRes != null) {
+            binding.portrait.setImageResource(portraitRes)
+        } else {
+            binding.avatar.bind(agent)
         }
     }
 

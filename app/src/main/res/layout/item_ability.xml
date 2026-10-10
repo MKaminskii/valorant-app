@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Componente reutilizável: botão de habilidade inflado para cada habilidade do agente. -->
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/Widget.Material3.CardView.Outlined"
     android:layout_width="@dimen/ability_item_width"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_marginEnd="@dimen/spacing_small"
     android:clickable="true"
     android:focusable="true"
@@ -13,16 +12,25 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
         android:padding="@dimen/spacing_small">
+
+        <ImageView
+            android:id="@+id/abilityIcon"
+            android:layout_width="@dimen/ability_icon_size"
+            android:layout_height="@dimen/ability_icon_size"
+            android:layout_marginTop="4dp"
+            android:importantForAccessibility="no"
+            android:scaleType="fitCenter" />
 
         <TextView
             android:id="@+id/abilityKey"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?attr/textAppearanceTitleLarge"
-            android:textColor="?attr/colorOnSurface"
+            android:layout_marginTop="4dp"
+            android:textAppearance="?attr/textAppearanceLabelLarge"
+            android:textColor="?attr/colorPrimary"
             android:textStyle="bold" />
 
         <TextView

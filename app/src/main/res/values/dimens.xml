@@ -3,7 +3,10 @@
     <dimen name="screen_padding">16dp</dimen>
     <dimen name="spacing_small">8dp</dimen>
     <dimen name="spacing_medium">12dp</dimen>
-    <dimen name="avatar_size_small">56dp</dimen>
-    <dimen name="avatar_size_large">88dp</dimen>
-    <dimen name="ability_item_width">88dp</dimen>
+    <dimen name="avatar_size_small">64dp</dimen>
+    <dimen name="avatar_size_large">120dp</dimen>
+    <dimen name="portrait_height">340dp</dimen>
+    <dimen name="portrait_fade_height">120dp</dimen>
+    <dimen name="ability_item_width">96dp</dimen>
+    <dimen name="ability_icon_size">40dp</dimen>
 </resources>

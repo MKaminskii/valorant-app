@@ -1,6 +1,7 @@
 *.iml
 .gradle
 /local.properties
+.kotlin
 /.idea/caches
 /.idea/libraries
 /.idea/modules.xml
@@ -13,3 +14,6 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Dados brutos da API usados so para gerar os mocks
+scripts/*.json

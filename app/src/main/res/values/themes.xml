@@ -18,4 +18,9 @@
     </style>
 
     <style name="Theme.ValorantAgents" parent="Base.Theme.ValorantAgents" />
+
+    <style name="ShapeAppearance.ValorantAgents.Circle" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>

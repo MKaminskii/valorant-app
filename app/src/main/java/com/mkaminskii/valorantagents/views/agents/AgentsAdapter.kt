@@ -10,7 +10,6 @@ import com.mkaminskii.valorantagents.databinding.ItemAgentBinding
 import com.mkaminskii.valorantagents.model.Agent
 import com.mkaminskii.valorantagents.views.common.bind
 
-/** Adapter da lista de agentes. O clique é repassado para a Activity, que decide a navegação. */
 class AgentsAdapter(
     private val onAgentClick: (Agent) -> Unit,
 ) : ListAdapter<Agent, AgentsAdapter.ViewHolder>(DiffCallback) {
@@ -30,7 +29,6 @@ class AgentsAdapter(
         with(holder.binding) {
             avatar.bind(agent)
             agentName.text = agent.name
-            // A função é opcional no modelo: sem ela, mostramos "Sem função".
             roleBadge.root.text = agent.role?.name ?: context.getString(R.string.no_role)
             abilitiesCount.text = context.resources.getQuantityString(
                 R.plurals.abilities_count,
